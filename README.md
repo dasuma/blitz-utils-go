@@ -1,1 +1,1 @@
-# blitz-utils-go
+# github.com/blitz-utils-go-go

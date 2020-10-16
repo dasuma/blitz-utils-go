@@ -1,4 +1,4 @@
-module blitz-utils
+module github.com/blitz-utils-go
 
 go 1.14
 

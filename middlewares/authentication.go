@@ -1,9 +1,11 @@
 package middlewares
 
 import (
-	"blitz-utils/utils"
-	"github.com/gin-gonic/gin"
 	"net/http"
+
+	"github.com/blitz-utils-go/utils"
+
+	"github.com/gin-gonic/gin"
 )
 
 var xAplicationID = utils.GetEnv("x_application_id", "d9cb1a37-3f72-4850-9eee-864846d22d7c")

@@ -1,11 +1,12 @@
 package rest
 
 import (
-	"blitz-utils/utils"
 	"bytes"
 	"encoding/json"
 	"net/http"
 	"time"
+
+	"github.com/blitz-utils-go/utils"
 )
 
 var user101 = utils.GetEnv("user_101", "CUE")
