@@ -1,4 +1,4 @@
-module github.com/blitz-utils-go
+module github.com/dasuma/blitz-utils-go
 
 go 1.14
 

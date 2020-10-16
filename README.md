@@ -1,1 +1,1 @@
-# github.com/blitz-utils-go-go
+# github.com/dasuma/blitz-utils-go-go

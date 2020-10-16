@@ -6,7 +6,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/blitz-utils-go/utils"
+	"github.com/dasuma/blitz-utils-go/utils"
 )
 
 var user101 = utils.GetEnv("user_101", "CUE")

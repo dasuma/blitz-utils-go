@@ -1,7 +1,7 @@
 package logs
 
 import (
-	"github.com/blitz-utils-go/utils"
+	"github.com/dasuma/blitz-utils-go/utils"
 	"github.com/evalphobia/go-logdna/logdna"
 )
 

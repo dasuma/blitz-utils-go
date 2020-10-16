@@ -3,7 +3,7 @@ package middlewares
 import (
 	"net/http"
 
-	"github.com/blitz-utils-go/utils"
+	"github.com/dasuma/blitz-utils-go/utils"
 
 	"github.com/gin-gonic/gin"
 )
