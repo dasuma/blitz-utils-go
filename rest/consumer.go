@@ -15,12 +15,14 @@ var user101 = utils.GetEnv("user_101", "CUE")
 var password101 = utils.GetEnv("password_101", "123456")
 
 //HTTPRequest request
-func HTTPRequest(method string, url string, headers []Headers, body interface{}, userID string, setHeaders func(req *http.Request, userID string) *http.Request) (*http.Response, error) {
+func HTTPRequest(method string, url string, headers []Headers, body interface{}, token *string, setHeaders func(req *http.Request, userID string) *http.Request) (*http.Response, error) {
 	req, _ := getReq(method, url, body)
 	for _, value := range headers {
 		req.Header.Set(value.Key, value.Value)
 	}
-	req = setHeaders(req, userID)
+	if token != nil {
+		req = setHeaders(req, *token)
+	}
 	client := &http.Client{Timeout: 50 * time.Second}
 	resp, err := client.Do(req)
 	message := fmt.Sprintf("end request with url:%s and request %s and response %v", url, body, resp)
