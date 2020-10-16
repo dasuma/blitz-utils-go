@@ -3,9 +3,12 @@ package rest
 import (
 	"bytes"
 	"encoding/json"
+	"fmt"
+	"io/ioutil"
 	"net/http"
 	"time"
 
+	"github.com/dasuma/blitz-utils-go/logs"
 	"github.com/dasuma/blitz-utils-go/utils"
 )
 
@@ -24,6 +27,8 @@ func HTTPRequest(method string, url string, body interface{}, token *string, set
 	}
 	client := &http.Client{Timeout: 50 * time.Second}
 	resp, err := client.Do(req)
+	message := fmt.Sprintf("end request with url:%s and request %s and response %v", url, body, resp.StatusCode)
+	logs.Logger.Info(message)
 	return resp, err
 }
 func getReq(method string, url string, body interface{}) (*http.Request, error) {
