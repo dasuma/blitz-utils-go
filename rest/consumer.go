@@ -15,7 +15,8 @@ var user101 = utils.GetEnv("user_101", "CUE")
 var password101 = utils.GetEnv("password_101", "123456")
 
 //HTTPRequest request
-func HTTPRequest(method string, url string, headers []Headers, body interface{}, token *string, setHeaders func(req *http.Request, userID string) *http.Request) (*http.Response, error) {
+func HTTPRequest(method string, url string, body interface{}, token *string, setHeaders func(req *http.Request, userID string) *http.Request) (*http.Response, error) {
+	headers := []Headers{{Key: "Content-Type", Value: "application/json"}}
 	req, _ := getReq(method, url, body)
 	for _, value := range headers {
 		req.Header.Set(value.Key, value.Value)
@@ -39,9 +40,8 @@ func getReq(method string, url string, body interface{}) (*http.Request, error) 
 	}
 }
 
-//SetHeaders101 set headers braze
-func SetHeaders101(req *http.Request, token string) *http.Request {
-	req.Header.Set("Content-Type", "application/json")
+//SetHeadersToken set headers braze
+func SetHeadersToken(req *http.Request, token string) *http.Request {
 	req.Header.Set("AUTHORIZATION", token)
 	return req
 }
