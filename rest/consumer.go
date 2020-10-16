@@ -26,7 +26,10 @@ func HTTPRequest(method string, url string, body interface{}, token *string, set
 	}
 	client := &http.Client{Timeout: 50 * time.Second}
 	resp, err := client.Do(req)
-	message := fmt.Sprintf("end request with url:%s and request %s and response %v", url, body, resp)
+	buf := new(bytes.Buffer)
+    buf.ReadFrom(resp.Body)
+    newStr := buf.String()
+	message := fmt.Sprintf("end request with url:%s and request %s and response %v", url, body, newStr)
 	logs.Logger.Info(message)
 	return resp, err
 }
