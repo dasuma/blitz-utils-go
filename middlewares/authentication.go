@@ -14,7 +14,9 @@ var xAplicationID = utils.GetEnv("x_application_id", "d9cb1a37-3f72-4850-9eee-86
 func BlitzMiddleware() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		apiKey := c.Request.Header.Get("x-api-key")
-		if apiKey != xAplicationID == true {
+		userID := c.Request.Header.Get("userID")
+
+		if apiKey != xAplicationID == true && userID == "" {
 			c.JSON(http.StatusUnauthorized, gin.H{"status": "fail"})
 			c.AbortWithStatus(http.StatusUnauthorized)
 			return
