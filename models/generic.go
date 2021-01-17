@@ -10,5 +10,5 @@ type GenericResponse struct {
 type GenericErrorResponse struct {
 	Message  string      `json:"message"`
 	Code     int         `json:"code"`
-	Response interface{} `json:"response"`
+	Response interface{} `json:"result"`
 }
