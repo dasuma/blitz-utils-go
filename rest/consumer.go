@@ -49,8 +49,16 @@ func getReq(method string, url string, body interface{}) (*http.Request, error) 
 
 }
 
-//SetHeadersToken set headers braze
+//SetHeadersToken set headers
 func SetHeadersToken(req *http.Request, token string) *http.Request {
 	req.Header.Set("AUTHORIZATION", token)
+	return req
+}
+
+//SetHeadersInternal set headers
+func SetHeadersInternal(req *http.Request, userID string, role string) *http.Request {
+	req.Header.Set("userID", userID)
+	req.Header.Set("role", role)
+
 	return req
 }
