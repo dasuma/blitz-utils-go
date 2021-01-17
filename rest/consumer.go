@@ -20,7 +20,7 @@ var errorCode = []int{
 	428, 429, 431, 451, 500, 501, 502, 503, 504, 505, 506, 507, 508, 510, 511}
 
 //HTTPRequest request
-func HTTPRequest(method string, url string, body interface{}, result interface{}, headers map[string]string, setHeaders func(req *http.Request, headers map[string]string) *http.Request) (interface{}, error) {
+func HTTPRequest(method string, url string, body interface{}, result interface{}, headers map[string]string) (interface{}, error) {
 	req, _ := getReq(method, url, body)
 	req = setHeaders(req, headers)
 	client := &http.Client{Timeout: 3 * time.Second}
@@ -50,7 +50,7 @@ func getReq(method string, url string, body interface{}) (*http.Request, error) 
 }
 
 //SetHeaders set headers
-func SetHeaders(req *http.Request, headers map[string]string) *http.Request {
+func setHeaders(req *http.Request, headers map[string]string) *http.Request {
 	for key, element := range headers {
 		req.Header.Set(key, element)
 	}
