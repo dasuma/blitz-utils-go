@@ -32,3 +32,20 @@ func GetIntEnv(key string, defaultValue int) int {
 	fmt.Printf("key not found using default value environment variable %v value %v \n ", key, defaultValue)
 	return defaultValue
 }
+
+//GetBoolEnv convert to bool
+func GetBoolEnv(key string, defaultValue bool) bool {
+	fmt.Printf("Trying to get environment variable %v  \n", key)
+	if value, ok := os.LookupEnv(key); ok {
+		convertedValue, err := strconv.ParseBool(value)
+		if err != nil {
+			fmt.Printf("error parsing value of key %v value  %v  \n", key, value)
+			fmt.Printf("using default value environment variable %v value %v \n ", key, defaultValue)
+			return defaultValue
+		}
+		fmt.Printf("key found environment variable %v value %v  \n", key, value)
+		return convertedValue
+	}
+	fmt.Printf("key not found using default value environment variable %v value %v \n ", key, defaultValue)
+	return defaultValue
+}

@@ -25,12 +25,18 @@ func HTTPRequest(method string, url string, body interface{}, result interface{}
 	req = setHeaders(req, headers)
 	client := &http.Client{Timeout: 3 * time.Second}
 	resp, err := client.Do(req)
-	if ContainsInt(errorCode, resp.StatusCode) {
-		responseData, err := ioutil.ReadAll(resp.Body)
-		if err != nil {
-			log.Fatalf(err.Error())
+	if resp != nil {
+		if ContainsInt(errorCode, resp.StatusCode) {
+			responseData, err := ioutil.ReadAll(resp.Body)
+			if err != nil {
+				log.Fatalf(err.Error())
+			}
+			message := fmt.Sprintf("error request with url:%s and request %s and code_rescode:%v response %v", url, body, resp.StatusCode, string(responseData))
+			log.Info(message)
+			return nil, errors.New(message)
 		}
-		message := fmt.Sprintf("error request with url:%s and request %s and code_rescode:%v response %v", url, body, resp.StatusCode, string(responseData))
+	} else {
+		message := fmt.Sprintf("error request with url:%s and request %s and code_rescode:%v response %v", url, body, nil, nil)
 		log.Info(message)
 		return nil, errors.New(message)
 	}
