@@ -3,7 +3,8 @@ package models
 //GenericResponse model
 type GenericResponse struct {
 	Response interface{} `json:"result"`
-	Message  string      `json:"message"`
+	Error    error
+	Message  string `json:"message"`
 }
 
 //GenericErrorResponse model
