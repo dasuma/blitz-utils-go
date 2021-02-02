@@ -1,6 +1,6 @@
 package evaluation
 
-func evaluateTax(tax float64, min float64, kind string) float64 {
+func Start(tax float64, min float64, kind string) float64 {
 	res := tax
 	if tax > min {
 		switch kind {
