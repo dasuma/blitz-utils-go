@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"net/http"
 
-	generic "github.com/dasuma/blitz-utils-go/models"
 	"github.com/dasuma/blitz-utils-go/rest"
 )
 
