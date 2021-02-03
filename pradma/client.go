@@ -19,11 +19,11 @@ type pradmaImpl struct {
 }
 
 type pradmaService interface {
-GetCity(name string, year int) (interface{}, error)
+	GetCity(name string, year int) (interface{}, error)
 }
 
 func (s *pradmaImpl) GetCity(name string, year int) (interface{}, error) {
-	url := fmt.Sprintf("%s/ms-city/city/%s?year=%v", cityServices,name,year)
+	url := fmt.Sprintf("%s/ms-city/city/%s?year=%v", cityServices, name, year)
 	headers := map[string]string{}
 	headers["Content-Type"] = "application/json"
 	var src interface{}
@@ -31,6 +31,5 @@ func (s *pradmaImpl) GetCity(name string, year int) (interface{}, error) {
 	if err != nil {
 		return nil, err
 	}
-	result := res.(*generic.GenericResponse)
-	return result, nil
+	return res, nil
 }
