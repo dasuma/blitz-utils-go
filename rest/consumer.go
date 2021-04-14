@@ -23,7 +23,7 @@ var errorCode = []int{
 func HTTPRequest(method string, url string, body interface{}, result interface{}, headers map[string]string) (interface{}, error) {
 	req, _ := getReq(method, url, body)
 	req = setHeaders(req, headers)
-	client := &http.Client{Timeout: 3 * time.Second}
+	client := &http.Client{Timeout: time.Duration(1) * time.Minute}
 	resp, err := client.Do(req)
 	if resp != nil {
 		if ContainsInt(errorCode, resp.StatusCode) {
